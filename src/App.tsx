@@ -12,7 +12,7 @@ const FORMATS: { value: Format; label: string }[] = [
 
 const SOCIALS = [
   { label: 'Twitter', href: 'https://x.com/vanikyaai', icon: '𝕏' },
-  { label: 'YouTube', href: 'https://youtube.com/@vanikyaai', icon: '▶' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@Vanikya', icon: '▶' },
   { label: 'LinkedIn', href: 'https://linkedin.com/company/vanikya-ai', icon: 'in' },
 ]
 
