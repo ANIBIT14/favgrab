@@ -2,7 +2,7 @@
 
 Extract and download favicons from any website instantly. Export as PNG, WebP, or JPG in sizes from 16px to 256px.
 
-**Live:** [favgrab.vercel.app](https://favgrab.vercel.app)
+**Live:** [favgrab.boldkit.dev](https://favgrab.boldkit.dev)
 
 ---
 
