@@ -17,7 +17,8 @@ Extract and download favicons from any website instantly. Export as PNG, WebP, o
 ## Tech Stack
 
 - [Vite](https://vitejs.dev/) + [React](https://react.dev/) + TypeScript
-- Vercel serverless function (CORS proxy for the favicon API)
+- [BoldKit](https://boldkit.dev) neubrutalism components
+- Serverless function as CORS proxy for the favicon API
 - Google FaviconV2 API as the favicon source
 
 ## Development
@@ -29,21 +30,13 @@ npm run dev
 
 The Vite dev server proxies `/api/favicon` → `t0.gstatic.com/faviconV2` automatically, so no environment variables are needed for local development.
 
-## Deployment
-
-Push to a GitHub repo and connect it to [Vercel](https://vercel.com). Vercel auto-detects Vite and runs `npm run build`. The `vercel.json` handles SPA routing (no blank page on reload) and wires up the serverless API proxy.
-
-```
-vercel --prod
-```
-
 ## How it works
 
 1. User enters a domain or URL
-2. The app calls `/api/favicon?url=DOMAIN&size=SIZE` (a Vercel serverless function)
-3. The function fetches from Google's FaviconV2 API and proxies it back with proper CORS headers
+2. The app fetches `/api/favicon?url=DOMAIN&size=SIZE` via a serverless proxy
+3. The proxy fetches from Google's FaviconV2 API and returns it with proper CORS headers
 4. The browser draws the image onto a `<canvas>` to convert it to the chosen format, then triggers a download
 
 ---
 
-Made by [Vanikya AI](https://vanikya.ai) · [@vanikyaai](https://x.com/vanikyaai)
+Made by [ANIBIT14](https://github.com/ANIBIT14) · [@vanikyaai](https://x.com/vanikyaai)
