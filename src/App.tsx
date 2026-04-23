@@ -1,4 +1,7 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
 
 const SIZES = [16, 32, 48, 64, 128, 256] as const
 type SizeOption = typeof SIZES[number]
@@ -30,7 +33,13 @@ function getFaviconUrl(domain: string, size: number): string {
   return `/api/favicon?url=https://${domain}&size=${size}`
 }
 
-function downloadImage(imgSrc: string, filename: string, format: Format, size: number, onError: () => void) {
+function downloadImage(
+  imgSrc: string,
+  filename: string,
+  format: Format,
+  size: number,
+  onError: () => void
+) {
   const img = new Image()
   img.crossOrigin = 'anonymous'
   img.onload = () => {
@@ -66,6 +75,20 @@ export default function App() {
   const [imgError, setImgError] = useState(false)
   const [history, setHistory] = useState<string[]>([])
 
+  // Autofill from ?domain= query param
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const domainParam = params.get('domain')
+    if (domainParam) {
+      const d = parseDomain(domainParam)
+      if (d) {
+        setInput(d)
+        setDomain(d)
+        setHistory([d])
+      }
+    }
+  }, [])
+
   const handleFetch = useCallback(() => {
     const raw = input.trim()
     if (!raw) return
@@ -74,37 +97,50 @@ export default function App() {
     const d = parseDomain(raw)
     if (!d) { setError('Enter a valid domain or URL'); return }
     setDomain(d)
+    // Update URL without reload
+    const url = new URL(window.location.href)
+    url.searchParams.set('domain', d)
+    window.history.replaceState({}, '', url.toString())
     setHistory(prev => [d, ...prev.filter(x => x !== d)].slice(0, 6))
   }, [input])
 
-  const handleDownload = useCallback((format: Format = selectedFormat, size: SizeOption = selectedSize) => {
-    if (!domain) return
-    const ext = format === 'jpeg' ? 'jpg' : format
-    const filename = `${domain}-${size}x${size}.${ext}`
-    downloadImage(
-      getFaviconUrl(domain, size),
-      filename,
-      format,
-      size,
-      () => setError('Download failed — try a different format or size')
-    )
-  }, [domain, selectedFormat, selectedSize])
+  const handleDownload = useCallback(
+    (format: Format = selectedFormat, size: SizeOption = selectedSize) => {
+      if (!domain) return
+      const ext = format === 'jpeg' ? 'jpg' : format
+      downloadImage(
+        getFaviconUrl(domain, size),
+        `${domain}-${size}x${size}.${ext}`,
+        format,
+        size,
+        () => setError('Download failed — try a different format or size')
+      )
+    },
+    [domain, selectedFormat, selectedSize]
+  )
 
   const loadDomain = (d: string) => {
     setInput(d)
     setDomain(d)
     setError(null)
     setImgError(false)
+    const url = new URL(window.location.href)
+    url.searchParams.set('domain', d)
+    window.history.replaceState({}, '', url.toString())
   }
 
   return (
     <>
-      <div className="bg-grid" aria-hidden="true" />
+      <div className="grid-bg" aria-hidden="true" />
 
       <header className="header">
         <div className="logo">
-          <span className="logo-mark">◈</span>
-          <span className="logo-name">favgrab</span>
+          <svg className="logo-mark" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="12,2 22,12 12,22 2,12" fill="hsl(38,96%,54%)" stroke="hsl(240,10%,8%)" strokeWidth="1.5" strokeLinejoin="round"/>
+            <polygon points="12,7 17,12 12,17 7,12" fill="none" stroke="hsl(240,10%,8%)" strokeWidth="1.5" strokeLinejoin="round"/>
+            <circle cx="12" cy="12" r="2" fill="hsl(240,10%,8%)"/>
+          </svg>
+          <span className="logo-name">FavGrab</span>
         </div>
         <div className="header-actions">
           <a
@@ -114,7 +150,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <span className="star-icon">★</span>
-            <span>Star</span>
+            Star
           </a>
           <a
             href="https://github.com/ANIBIT14/favgrab"
@@ -129,10 +165,10 @@ export default function App() {
 
       <main className="main">
         <section className="hero">
-          <div className="hero-eyebrow">— FAVICON EXTRACTOR v0.0.1</div>
+          <div className="hero-eyebrow">Favicon Extractor — v0.0.1</div>
           <h1 className="hero-title">
             Grab any<br />
-            <em>website's</em><br />
+            <span className="hero-title-line2">website's</span><br />
             favicon.
           </h1>
           <p className="hero-sub">
@@ -142,11 +178,10 @@ export default function App() {
         </section>
 
         <div className="input-row">
-          <div className="input-box">
+          <div className="input-wrap">
             <span className="input-prefix">https://</span>
-            <input
-              type="text"
-              className="url-input"
+            <Input
+              className="url-input-field"
               placeholder="google.com"
               value={input}
               onChange={e => setInput(e.target.value)}
@@ -155,108 +190,114 @@ export default function App() {
               autoComplete="off"
               autoCapitalize="off"
             />
-            <button className="fetch-btn" onClick={handleFetch}>
-              <span>Fetch</span>
-              <span className="fetch-arrow">→</span>
-            </button>
+            <Button className="fetch-btn-wrap" onClick={handleFetch}>
+              Fetch →
+            </Button>
           </div>
           {error && <div className="input-error">⚠ {error}</div>}
         </div>
 
         {domain && !imgError && (
-          <section className="result" key={domain}>
-            <div className="result-meta">
-              <span className="result-domain">{domain}</span>
-              <span className="result-tag">● LIVE</span>
-            </div>
-
-            <div className="result-body">
-              <div className="preview-col">
-                <div className="main-preview">
-                  <img
-                    src={getFaviconUrl(domain, 256)}
-                    alt={`${domain} favicon`}
-                    className="main-preview-img"
-                    onError={() => setImgError(true)}
-                  />
-                </div>
-                <div className="preview-sub">{domain}</div>
+          <div className="result-wrap" key={domain}>
+            <div className="result-card">
+              <div className="result-header">
+                <span className="result-domain">{domain}</span>
+                <Badge variant="accent">● Live</Badge>
               </div>
 
-              <div className="controls-col">
-                <div className="control-group">
-                  <div className="control-label">SELECT SIZE</div>
-                  <div className="size-grid">
-                    {SIZES.map(size => (
-                      <button
-                        key={size}
-                        className={`size-chip${selectedSize === size ? ' active' : ''}`}
-                        onClick={() => setSelectedSize(size)}
-                        aria-pressed={selectedSize === size}
-                      >
-                        <div className="size-thumb">
-                          <img
-                            src={getFaviconUrl(domain, Math.min(size, 64))}
-                            alt=""
-                            width={Math.min(size, 32)}
-                            height={Math.min(size, 32)}
-                          />
-                        </div>
-                        <span className="size-label">{size}px</span>
-                      </button>
-                    ))}
+              <div className="result-body">
+                <div className="preview-col">
+                  <div className="preview-frame">
+                    <img
+                      src={getFaviconUrl(domain, 256)}
+                      alt={`${domain} favicon`}
+                      className="preview-img"
+                      onError={() => setImgError(true)}
+                    />
                   </div>
+                  <div className="preview-domain">{domain}</div>
                 </div>
 
-                <div className="control-group">
-                  <div className="control-label">FORMAT</div>
-                  <div className="format-row">
+                <div className="controls-col">
+                  <div>
+                    <div className="control-label">Select Size</div>
+                    <div className="size-grid">
+                      {SIZES.map(size => (
+                        <button
+                          key={size}
+                          className={`size-chip${selectedSize === size ? ' active' : ''}`}
+                          onClick={() => setSelectedSize(size)}
+                          aria-pressed={selectedSize === size}
+                        >
+                          <div className="size-thumb">
+                            <img
+                              src={getFaviconUrl(domain, Math.min(size, 64))}
+                              alt=""
+                              width={Math.min(size, 32)}
+                              height={Math.min(size, 32)}
+                            />
+                          </div>
+                          {size}px
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="control-label">Format</div>
+                    <div className="format-row">
+                      {FORMATS.map(f => (
+                        <Button
+                          key={f.value}
+                          variant="outline"
+                          className={`format-btn${selectedFormat === f.value ? ' active' : ''}`}
+                          onClick={() => setSelectedFormat(f.value)}
+                          aria-pressed={selectedFormat === f.value}
+                        >
+                          {f.label}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Button className="download-btn" size="lg" onClick={() => handleDownload()}>
+                    ↓ Download {selectedSize}×{selectedSize}{' '}
+                    {selectedFormat === 'jpeg' ? 'JPG' : selectedFormat.toUpperCase()}
+                  </Button>
+
+                  <div className="quick-downloads">
+                    <span className="quick-label">Quick export:</span>
                     {FORMATS.map(f => (
                       <button
                         key={f.value}
-                        className={`format-btn${selectedFormat === f.value ? ' active' : ''}`}
-                        onClick={() => setSelectedFormat(f.value)}
-                        aria-pressed={selectedFormat === f.value}
+                        className="quick-btn"
+                        onClick={() => handleDownload(f.value, selectedSize)}
                       >
                         {f.label}
                       </button>
                     ))}
                   </div>
                 </div>
-
-                <button className="download-btn" onClick={() => handleDownload()}>
-                  <span className="download-icon">↓</span>
-                  Download {selectedSize}×{selectedSize} {selectedFormat === 'jpeg' ? 'JPG' : selectedFormat.toUpperCase()}
-                </button>
-
-                <div className="quick-downloads">
-                  <span className="quick-label">Quick export:</span>
-                  {FORMATS.map(f => (
-                    <button
-                      key={f.value}
-                      className="quick-btn"
-                      onClick={() => handleDownload(f.value, selectedSize)}
-                    >
-                      {f.label}
-                    </button>
-                  ))}
-                </div>
               </div>
             </div>
-          </section>
+          </div>
         )}
 
         {imgError && domain && (
           <div className="no-favicon">
             <span className="no-favicon-icon">◌</span>
-            <p>No favicon found for <strong>{domain}</strong></p>
-            <p className="no-favicon-sub">Try a different domain or check the URL.</p>
+            <p>
+              No favicon found for <strong>{domain}</strong>
+            </p>
+            <p style={{ fontSize: 12, marginTop: 6, color: 'hsl(var(--muted-foreground))' }}>
+              Try a different domain or check the URL.
+            </p>
           </div>
         )}
 
         {history.length > 0 && (
           <div className="history">
-            <div className="history-label">RECENT</div>
+            <div className="history-label">Recent</div>
             <div className="history-list">
               {history.map(d => (
                 <button
@@ -265,7 +306,7 @@ export default function App() {
                   onClick={() => loadDomain(d)}
                 >
                   <img src={getFaviconUrl(d, 32)} alt="" width={14} height={14} />
-                  <span>{d}</span>
+                  {d}
                 </button>
               ))}
             </div>
@@ -275,7 +316,12 @@ export default function App() {
 
       <footer className="footer">
         <div className="footer-top">
-          <a href="https://vanikya.ai" target="_blank" rel="noopener noreferrer" className="footer-vanikya">
+          <a
+            href="https://vanikya.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-vanikya"
+          >
             vanikya.ai
           </a>
           <div className="footer-socials">
@@ -295,14 +341,14 @@ export default function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          Uses Google's FaviconV2 API · Free & open source ·{' '}
+          Uses Google's FaviconV2 API · Free &amp; open source ·{' '}
           <a
             href="https://boldkit.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-boldkit"
           >
-            UI components by BoldKit
+            UI by BoldKit
           </a>
         </div>
       </footer>
