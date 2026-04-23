@@ -105,6 +105,44 @@ body::before {
   color: var(--text);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.star-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: 100px;
+  font-family: var(--font-m);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
+}
+
+.star-btn:hover {
+  background: rgba(245, 166, 35, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.star-icon {
+  font-size: 13px;
+  transition: transform 0.2s;
+}
+
+.star-btn:hover .star-icon {
+  transform: scale(1.25) rotate(-5deg);
+}
+
 .header-link {
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -670,6 +708,18 @@ body::before {
   font-size: 11px;
   color: var(--text-3);
   letter-spacing: 0.04em;
+}
+
+.footer-boldkit {
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 1px dotted var(--border-2);
+}
+
+.footer-boldkit:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 /* ───── SCROLLBAR ───── */

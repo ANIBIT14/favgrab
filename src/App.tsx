@@ -106,14 +106,25 @@ export default function App() {
           <span className="logo-mark">◈</span>
           <span className="logo-name">favgrab</span>
         </div>
-        <a
-          href="https://github.com/anibit14/favgrab"
-          className="header-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          github ↗
-        </a>
+        <div className="header-actions">
+          <a
+            href="https://github.com/ANIBIT14/favgrab"
+            className="star-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="star-icon">★</span>
+            <span>Star</span>
+          </a>
+          <a
+            href="https://github.com/ANIBIT14/favgrab"
+            className="header-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github ↗
+          </a>
+        </div>
       </header>
 
       <main className="main">
@@ -287,7 +298,15 @@ export default function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          Uses Google's FaviconV2 API · Free & open source
+          Uses Google's FaviconV2 API · Free & open source ·{' '}
+          <a
+            href="https://boldkit.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-boldkit"
+          >
+            UI components by BoldKit
+          </a>
         </div>
       </footer>
     </>
