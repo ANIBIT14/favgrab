@@ -565,6 +565,215 @@ body {
 
 .history-item img { object-fit: contain; }
 
+/* ── USE CASES SECTION ── */
+.use-cases-section {
+  position: relative;
+  z-index: 1;
+  border-top: 3px solid hsl(var(--border));
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+}
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: hsl(var(--primary));
+  color: hsl(var(--foreground));
+  border: 2px solid hsl(var(--background));
+  padding: 4px 12px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 14px;
+  color: hsl(var(--background));
+}
+
+.section-sub {
+  font-size: 13px;
+  line-height: 1.8;
+  color: hsl(var(--background) / 0.6);
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 3px solid hsl(var(--background));
+}
+
+.use-case-card {
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid hsl(var(--background));
+}
+
+.use-case-card:last-child {
+  border-right: none;
+}
+
+.use-case-illustration {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: #0d0d0d;
+  border-bottom: 3px solid hsl(var(--background));
+  overflow: hidden;
+}
+
+.use-case-illustration svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.use-case-content {
+  padding: 20px;
+  flex: 1;
+  background: hsl(var(--foreground));
+}
+
+.use-case-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: hsl(var(--background));
+  margin-bottom: 8px;
+}
+
+.use-case-desc {
+  font-size: 12px;
+  line-height: 1.75;
+  color: hsl(var(--background) / 0.6);
+}
+
+/* ── FEATURES SECTION ── */
+.features-section {
+  position: relative;
+  z-index: 1;
+  border-top: 3px solid hsl(var(--background));
+  background: hsl(var(--primary));
+}
+
+.features-section .section-inner {
+  padding: 72px 24px;
+}
+
+.features-headline {
+  margin-bottom: 48px;
+}
+
+.features-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: hsl(var(--foreground));
+}
+
+.features-title-muted {
+  color: hsl(var(--foreground) / 0.5);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 3px solid hsl(var(--foreground));
+}
+
+.feature-card {
+  padding: 28px 24px;
+  border-right: 3px solid hsl(var(--foreground));
+  background: hsl(var(--primary));
+}
+
+.feature-card:last-child {
+  border-right: none;
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+}
+
+.feature-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.feature-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: hsl(var(--foreground));
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.feature-desc {
+  font-size: 12px;
+  line-height: 1.8;
+  color: hsl(var(--foreground) / 0.7);
+}
+
+/* responsive sections */
+@media (max-width: 768px) {
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .use-case-card {
+    border-right: none;
+    border-bottom: 3px solid hsl(var(--background));
+  }
+
+  .use-case-card:last-child {
+    border-bottom: none;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    border-right: none;
+    border-bottom: 3px solid hsl(var(--foreground));
+  }
+
+  .feature-card:last-child {
+    border-bottom: none;
+  }
+
+  .section-inner {
+    padding: 48px 16px;
+  }
+}
+
 /* ── FOOTER ── */
 .footer {
   position: relative;
