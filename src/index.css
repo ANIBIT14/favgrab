@@ -882,7 +882,10 @@ body {
 }
 
 .star-icon {
-  font-size: 17px;
+  font-size: 11px;
+  transform: scale(1.5);
+  display: inline-flex;
+  line-height: 1;
 }
 
 ::selection {
