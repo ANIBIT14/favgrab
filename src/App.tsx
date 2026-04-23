@@ -191,7 +191,7 @@ export default function App() {
               autoCapitalize="off"
             />
             <Button className="fetch-btn-wrap" onClick={handleFetch}>
-              Fetch →
+              Fetch
             </Button>
           </div>
           {error && <div className="input-error">⚠ {error}</div>}

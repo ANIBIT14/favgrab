@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://favgrab.boldkit.dev/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ik.imagekit.io/fincalfy/favgrab-hero</image:loc>
+      <image:title>FavGrab — Download Any Website's Favicon</image:title>
+      <image:caption>Extract and download favicons from any website. Export as PNG, WebP, or JPG in any size.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://favgrab.boldkit.dev/favicon.svg</image:loc>
+      <image:title>FavGrab Logo</image:title>
+    </image:image>
   </url>
 </urlset>
