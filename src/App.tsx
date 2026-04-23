@@ -275,12 +275,9 @@ export default function App() {
 
       <footer className="footer">
         <div className="footer-top">
-          <span className="footer-brand">
-            Powered by{' '}
-            <a href="https://vanikya.ai" target="_blank" rel="noopener noreferrer" className="footer-vanikya">
-              Vanikya AI
-            </a>
-          </span>
+          <a href="https://vanikya.ai" target="_blank" rel="noopener noreferrer" className="footer-vanikya">
+            vanikya.ai
+          </a>
           <div className="footer-socials">
             {SOCIALS.map(s => (
               <a
