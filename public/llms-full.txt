@@ -1,0 +1,83 @@
+# FavGrab — Full Reference
+
+> Free browser-based toolkit for web developers: download favicons from any domain and convert images between common formats without uploads.
+
+## What FavGrab is
+
+FavGrab is a static single-page web app hosted at https://favgrab.boldkit.dev. It offers two tools today:
+
+1. A favicon downloader that fetches the favicon for any domain via Google's public FaviconV2 service, lets the user pick a size (16, 32, 48, 64, 128, or 256 px), and exports it as PNG, WebP, or JPG.
+2. A fully client-side image converter that decodes a wide range of input formats and re-encodes them into common web formats, with optional quality control and resizing.
+
+All processing for the image converter runs locally in the visitor's browser. Files never leave the device. There is no upload step, no server-side processing, no signup, no payment, and no per-user tracking.
+
+## Why local-first matters
+
+- Privacy: photos containing faces, documents, screenshots of internal tooling, or other sensitive content stay on the user's machine.
+- Speed: the conversion runs at the user's CPU speed with no upload/download round trip. Large files (50 MB+) finish in seconds.
+- Offline use: after the first page load, the static assets and lazily fetched WebAssembly codecs are cached by the browser. The converter continues to work without an internet connection.
+- Cost: no server compute, so the service is free with no rate limits.
+
+## Image Converter
+
+URL: https://favgrab.boldkit.dev/convert
+
+### Supported input formats
+
+PNG, JPG/JPEG, WebP, AVIF, GIF (first frame only), BMP, ICO, HEIC, HEIF, TIFF.
+
+Decoders:
+
+- PNG, JPG, WebP, AVIF, GIF, BMP, ICO are decoded by the browser's native `createImageBitmap()` API.
+- HEIC and HEIF are decoded by `libheif-js` (WebAssembly), loaded on demand the first time a HEIC/HEIF file is dropped.
+- TIFF is decoded by `utif2`, loaded on demand.
+
+### Supported output formats
+
+PNG, JPG/JPEG, WebP, AVIF, BMP, ICO.
+
+Encoders:
+
+- PNG, JPG, WebP via the browser's Canvas `toBlob()` API.
+- AVIF via `@jsquash/avif` WebAssembly, loaded on demand.
+- BMP via a small custom 24-bit BMP writer.
+- ICO via a small custom writer that wraps a PNG payload in an ICO container (single image, up to 256×256).
+
+HEIC, HEIF, and TIFF are not offered as output formats because no viable client-side encoders exist for them.
+
+### Options
+
+- Quality: an integer from 1 to 100, default 95, applied to lossy outputs (JPG, WebP, AVIF). PNG and BMP are lossless. ICO embeds a lossless PNG.
+- Resize: optional. When enabled, the user provides a max-side value in pixels. Images larger than that on either side are downscaled with high-quality bilinear filtering; the aspect ratio is preserved. Upscaling is never applied.
+- Batch: any number of files can be processed. Files are converted sequentially with per-file progress. Results can be downloaded individually or all at once as a streaming ZIP archive (produced with `client-zip`).
+
+### Save behavior
+
+When the browser supports the File System Access API (Chrome, Edge, Opera, Arc on desktop), clicking Download opens the native OS Save As dialog so the user picks a destination folder. Other browsers fall back to standard `<a download>` behavior, which saves to the browser's default Downloads folder unless the user has enabled "ask where to save each file" in browser settings.
+
+## Favicon Downloader
+
+URL: https://favgrab.boldkit.dev/
+
+Enter a domain or full URL. FavGrab requests the favicon via Google's FaviconV2 service and previews it. The user picks a size (16, 32, 48, 64, 128, 256) and a format (PNG, WebP, JPG) and downloads. Recent domains are remembered in-session for quick re-use.
+
+## Tech stack
+
+- React 18 single-page app, built with Vite.
+- TypeScript end-to-end.
+- Tailwind v4 + a custom BoldKit-styled component layer (`@/components/ui/*`).
+- No router library: a 30-line path-based router (`src/lib/router.tsx`) handles `/` and `/convert`.
+- Deployed on Vercel as static assets with an SPA rewrite (`vercel.json`).
+- Codec dependencies are dynamically imported and code-split, so the initial JS bundle stays around 70 KB gzipped. HEIC, AVIF, and TIFF chunks only load when actually used.
+
+## Privacy & data
+
+- No user accounts.
+- No file ever leaves the user's browser for the image converter.
+- The favicon downloader proxies a single GET to Google's FaviconV2 endpoint per fetch; no personal data is sent.
+- Site-wide analytics use Google Analytics (anonymous traffic counts only).
+- No cookies are used for personalization or tracking.
+
+## License & operator
+
+Open source on GitHub: https://github.com/ANIBIT14/favgrab. Operated by Vanikya AI (https://vanikya.ai).

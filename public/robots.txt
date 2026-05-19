@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://favgrab.boldkit.dev/sitemap.xml
+
+# LLM-friendly site description
+# See https://favgrab.boldkit.dev/llms.txt

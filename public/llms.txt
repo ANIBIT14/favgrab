@@ -1,0 +1,20 @@
+# FavGrab
+
+> Free browser-based toolkit for web developers. Download favicons from any domain, and convert images between PNG, JPG, WebP, AVIF, HEIC, TIFF, BMP, and ICO — entirely client-side, with no uploads.
+
+FavGrab runs as a single-page application. All image processing happens in the visitor's browser using Canvas, WebCodecs, and lazy-loaded WebAssembly codecs (libheif-js for HEIC/HEIF, utif2 for TIFF, @jsquash/avif for AVIF encode). No file ever leaves the user's device. There is no account, no analytics tracking individual users, and no paid tier.
+
+## Tools
+
+- [Favicon Downloader](https://favgrab.boldkit.dev/): Enter any domain, get its favicon at sizes 16, 32, 48, 64, 128, or 256 pixels. Export as PNG, WebP, or JPG. Powered by Google's FaviconV2 service as the upstream source.
+- [Image Converter](https://favgrab.boldkit.dev/convert): Drop one or more images. Decode formats: PNG, JPG, WebP, AVIF, GIF (first frame), BMP, ICO, HEIC, HEIF, TIFF. Encode formats: PNG, JPG, WebP, AVIF, BMP, ICO. Supports per-file quality (1–100) for lossy outputs, optional max-side resize with aspect preserved, and batch download as a streaming ZIP.
+
+## Reference
+
+- [Sitemap](https://favgrab.boldkit.dev/sitemap.xml)
+- [Web App Manifest](https://favgrab.boldkit.dev/site.webmanifest)
+- [Source code on GitHub](https://github.com/ANIBIT14/favgrab)
+
+## Operator
+
+- Vanikya AI — https://vanikya.ai

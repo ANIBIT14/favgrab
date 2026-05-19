@@ -1,6 +1,6 @@
 {
   "name": "favgrab",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,15 +10,19 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@jsquash/avif": "^2.1.1",
     "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/vite": "^4.2.4",
     "class-variance-authority": "^0.7.1",
+    "client-zip": "^2.5.0",
     "clsx": "^2.1.1",
+    "libheif-js": "^1.19.8",
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.2.4",
+    "utif2": "^4.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

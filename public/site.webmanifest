@@ -1,7 +1,7 @@
 {
   "name": "FavGrab",
   "short_name": "FavGrab",
-  "description": "Download favicons from any website instantly.",
+  "description": "Download favicons and convert image formats — 100% in your browser.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fefdf6",
@@ -11,6 +11,22 @@
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Favicon Extractor",
+      "short_name": "Favicon",
+      "description": "Download a favicon from any domain",
+      "url": "/",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Image Converter",
+      "short_name": "Convert",
+      "description": "Convert images between formats locally",
+      "url": "/convert",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }

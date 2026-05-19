@@ -13,6 +13,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  worker: {
+    format: 'es',
+  },
+  optimizeDeps: {
+    exclude: ['@jsquash/avif', 'libheif-js'],
+  },
   server: {
     proxy: {
       '/api/favicon': {
