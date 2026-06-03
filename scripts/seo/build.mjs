@@ -3,7 +3,7 @@
 // populated. Also refreshes public/sitemap.xml so the committed source stays in
 // sync with the generated output.
 
-import { writeFile, mkdir } from 'node:fs/promises'
+import { writeFile, mkdir, readFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { SITE, allPages } from './pages.mjs'
@@ -75,6 +75,15 @@ async function main() {
   for (const page of allPages) {
     written.push(await writePage(DIST, page))
   }
+
+  // The SEO pair pages turn dist/convert/ into a real directory. Vercel serves
+  // a directory by looking for index.html inside it and 404s when absent —
+  // *before* the catch-all rewrite to /index.html runs. So reloading the
+  // /convert SPA route would 404. Emit the SPA shell as dist/convert/index.html
+  // so a direct hit on /convert serves the app, which then renders <Convert />.
+  const shell = await readFile(resolve(DIST, 'index.html'), 'utf8')
+  await writeFile(resolve(DIST, 'convert', 'index.html'), shell, 'utf8')
+  written.push('convert/index.html (SPA shell)')
 
   const sitemap = buildSitemap()
   await writeFile(resolve(DIST, 'sitemap.xml'), sitemap, 'utf8')
