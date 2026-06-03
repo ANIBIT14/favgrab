@@ -9,6 +9,19 @@ FavGrab runs as a single-page application. All image processing happens in the v
 - [Favicon Downloader](https://favgrab.boldkit.dev/): Enter any domain, get its favicon at sizes 16, 32, 48, 64, 128, or 256 pixels. Export as PNG, WebP, or JPG. Powered by Google's FaviconV2 service as the upstream source.
 - [Image Converter](https://favgrab.boldkit.dev/convert): Drop one or more images. Decode formats: PNG, JPG, WebP, AVIF, GIF (first frame), BMP, ICO, HEIC, HEIF, TIFF. Encode formats: PNG, JPG, WebP, AVIF, BMP, ICO. Supports per-file quality (1–100) for lossy outputs, optional max-side resize with aspect preserved, and batch download as a streaming ZIP.
 
+## Conversion guides
+
+Static, no-JS landing pages explaining a specific conversion. Each links into the live converter.
+
+- [Image Converter — hub](https://favgrab.boldkit.dev/image-converter): Overview of every supported conversion, both directions, with links to each guide.
+- [HEIC to JPG](https://favgrab.boldkit.dev/convert/heic-to-jpg): Turn iPhone HEIC photos into universal JPG files.
+- [HEIC to PNG](https://favgrab.boldkit.dev/convert/heic-to-png): Convert iPhone HEIC images to lossless PNG.
+- [WebP to PNG](https://favgrab.boldkit.dev/convert/webp-to-png): Save downloaded .webp images as standard PNG, transparency preserved.
+- [PNG to WebP](https://favgrab.boldkit.dev/convert/png-to-webp): Compress PNG to lightweight WebP for faster sites.
+- [PNG to JPG](https://favgrab.boldkit.dev/convert/png-to-jpg): Shrink PNG files to compact JPG with quality control.
+- [JPG to PNG](https://favgrab.boldkit.dev/convert/jpg-to-png): Convert JPG/JPEG to lossless PNG for editing.
+- [PNG to ICO](https://favgrab.boldkit.dev/convert/png-to-ico): Generate a favicon.ico or Windows icon from a PNG.
+
 ## Reference
 
 - [Sitemap](https://favgrab.boldkit.dev/sitemap.xml)

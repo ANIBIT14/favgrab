@@ -1221,6 +1221,16 @@ body {
   gap: 8px;
   margin-top: 18px;
 }
+/* The global `* { padding: 0 }` reset is unlayered and so beats Tailwind's
+   layered px-* utilities; set badge/button x-padding here (unlayered, class
+   specificity) so it actually wins the cascade. */
+.convert-badges > * {
+  padding: 7px 18px;
+}
+.conv-btn-pad {
+  padding-left: 26px;
+  padding-right: 26px;
+}
 
 /* DROPZONE */
 .dropzone {
@@ -1620,6 +1630,57 @@ body {
   font-size: 13px;
   line-height: 1.6;
   color: hsl(var(--muted-foreground));
+}
+
+/* ============================================================
+   POPULAR CONVERSIONS (internal links to static SEO pages)
+   ============================================================ */
+.popular-conv {
+  position: relative;
+  z-index: 1;
+  margin-top: 48px;
+}
+.popular-conv-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.popular-conv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+.popular-conv-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: hsl(var(--foreground));
+  background: hsl(var(--card));
+  border: 3px solid hsl(var(--border));
+  box-shadow: 3px 3px 0px hsl(var(--shadow-color));
+  padding: 12px 10px;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+}
+.popular-conv-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px hsl(var(--shadow-color));
+  background: hsl(var(--accent));
+}
+.popular-conv-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px hsl(var(--shadow-color));
+}
+.popular-conv-all {
+  background: hsl(var(--primary));
 }
 
 /* ============================================================

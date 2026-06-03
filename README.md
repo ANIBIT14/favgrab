@@ -50,17 +50,6 @@ npm run build   # production build to ./dist
 npm run preview # serve the built bundle
 ```
 
-## SEO
-
-The site ships with a full modern SEO surface:
-
-- Per-route `<title>`, `<meta description>`, canonical, OG, and Twitter tags
-- Structured data: `WebApplication`, `SoftwareApplication`, `Organization`, `BreadcrumbList`, `HowTo`, and `FAQPage`
-- Visual + structured breadcrumbs on subpages
-- [`sitemap.xml`](https://favgrab.boldkit.dev/sitemap.xml) with image entries
-- AI-crawler-friendly [`/llms.txt`](https://favgrab.boldkit.dev/llms.txt) and [`/llms-full.txt`](https://favgrab.boldkit.dev/llms-full.txt)
-- `robots.txt` explicitly allows GPTBot, ClaudeBot, Google-Extended, PerplexityBot, and CCBot
-
 ## How the converter works
 
 1. The user drops one or more files. Each file's format is detected from its magic bytes (with extension fallback).

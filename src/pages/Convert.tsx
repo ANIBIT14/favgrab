@@ -10,6 +10,17 @@ import { saveBlob } from '@/lib/convert/saveAs'
 import { saveAsZip } from '@/lib/convert/zipDownload'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 
+// Internal links to the static SEO landing pages (generated at build time).
+const POPULAR_CONVERSIONS = [
+  { href: '/convert/heic-to-jpg', label: 'HEIC → JPG' },
+  { href: '/convert/heic-to-png', label: 'HEIC → PNG' },
+  { href: '/convert/webp-to-png', label: 'WebP → PNG' },
+  { href: '/convert/png-to-webp', label: 'PNG → WebP' },
+  { href: '/convert/png-to-jpg', label: 'PNG → JPG' },
+  { href: '/convert/jpg-to-png', label: 'JPG → PNG' },
+  { href: '/convert/png-to-ico', label: 'PNG → ICO' },
+]
+
 interface FileItem {
   id: string
   file: File
@@ -210,7 +221,7 @@ export default function Convert() {
                   <div className="file-actions">
                     {it.status === 'converting' && <span className="spinner" aria-label="Converting" />}
                     {it.status === 'done' && it.result && (
-                      <Button size="sm" onClick={() => saveOne(it)}>Download</Button>
+                      <Button size="sm" className="conv-btn-pad" onClick={() => saveOne(it)}>Download</Button>
                     )}
                     <button className="file-x" onClick={() => removeItem(it.id)} aria-label="Remove">×</button>
                   </div>
@@ -223,7 +234,7 @@ export default function Convert() {
                   {resultCount} converted{errorCount ? `, ${errorCount} failed` : ''}
                 </div>
                 {resultCount >= 2 && (
-                  <Button variant="secondary" onClick={saveAll}>↓ Download all as ZIP</Button>
+                  <Button variant="secondary" className="conv-btn-pad" onClick={saveAll}>↓ Download all as ZIP</Button>
                 )}
               </div>
             )}
@@ -317,6 +328,22 @@ export default function Convert() {
         <div className="info-card">
           <h3>Why local?</h3>
           <p>No upload means no waiting on slow connections, no privacy risk, and no server costs. Drop a 50MB photo and the conversion runs at your CPU's full speed — instantly, even on a plane.</p>
+        </div>
+      </section>
+
+      <section className="popular-conv">
+        <h2 className="popular-conv-title">Popular conversions</h2>
+        <div className="popular-conv-grid">
+          {POPULAR_CONVERSIONS.map(c => (
+            // Plain anchors: these are static SEO pages outside the SPA router,
+            // so a full navigation is intentional.
+            <a key={c.href} href={c.href} className="popular-conv-link">
+              {c.label}
+            </a>
+          ))}
+          <a href="/image-converter" className="popular-conv-link popular-conv-all">
+            All converters →
+          </a>
         </div>
       </section>
     </main>
