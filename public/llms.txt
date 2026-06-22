@@ -16,11 +16,23 @@ Static, no-JS landing pages explaining a specific conversion. Each links into th
 - [Image Converter — hub](https://favgrab.boldkit.dev/image-converter): Overview of every supported conversion, both directions, with links to each guide.
 - [HEIC to JPG](https://favgrab.boldkit.dev/convert/heic-to-jpg): Turn iPhone HEIC photos into universal JPG files.
 - [HEIC to PNG](https://favgrab.boldkit.dev/convert/heic-to-png): Convert iPhone HEIC images to lossless PNG.
+- [HEIC to WebP](https://favgrab.boldkit.dev/convert/heic-to-webp): Convert iPhone HEIC photos straight to lightweight WebP for the web.
 - [WebP to PNG](https://favgrab.boldkit.dev/convert/webp-to-png): Save downloaded .webp images as standard PNG, transparency preserved.
+- [WebP to JPG](https://favgrab.boldkit.dev/convert/webp-to-jpg): Turn .webp images into universal JPG files.
 - [PNG to WebP](https://favgrab.boldkit.dev/convert/png-to-webp): Compress PNG to lightweight WebP for faster sites.
+- [JPG to WebP](https://favgrab.boldkit.dev/convert/jpg-to-webp): Compress JPG/JPEG photos to smaller WebP.
 - [PNG to JPG](https://favgrab.boldkit.dev/convert/png-to-jpg): Shrink PNG files to compact JPG with quality control.
 - [JPG to PNG](https://favgrab.boldkit.dev/convert/jpg-to-png): Convert JPG/JPEG to lossless PNG for editing.
+- [AVIF to PNG](https://favgrab.boldkit.dev/convert/avif-to-png): Save next-gen .avif images as universal PNG, transparency preserved.
+- [AVIF to JPG](https://favgrab.boldkit.dev/convert/avif-to-jpg): Turn .avif images into universal JPG files.
+- [PNG to AVIF](https://favgrab.boldkit.dev/convert/png-to-avif): Compress PNG to next-gen AVIF for the smallest high-quality web files.
+- [JPG to AVIF](https://favgrab.boldkit.dev/convert/jpg-to-avif): Compress JPG/JPEG photos to next-gen AVIF for maximum compression.
+- [GIF to PNG](https://favgrab.boldkit.dev/convert/gif-to-png): Convert a GIF (first frame) to a full-colour lossless PNG still.
+- [TIFF to PNG](https://favgrab.boldkit.dev/convert/tiff-to-png): Convert large TIFF scans to lossless PNG that opens anywhere.
+- [TIFF to JPG](https://favgrab.boldkit.dev/convert/tiff-to-jpg): Shrink large TIFF scans to compact, shareable JPG files.
+- [BMP to PNG](https://favgrab.boldkit.dev/convert/bmp-to-png): Convert bulky uncompressed BMP bitmaps to compact lossless PNG.
 - [PNG to ICO](https://favgrab.boldkit.dev/convert/png-to-ico): Generate a favicon.ico or Windows icon from a PNG.
+- [JPG to ICO](https://favgrab.boldkit.dev/convert/jpg-to-ico): Generate a favicon.ico or Windows icon from a JPG.
 
 ## Reference
 

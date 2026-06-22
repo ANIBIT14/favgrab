@@ -62,11 +62,23 @@ In addition to the interactive tool, FavGrab ships a set of static, server-frien
 - https://favgrab.boldkit.dev/image-converter — Hub/pillar page. Summarizes every supported input and output format and links to each individual guide.
 - https://favgrab.boldkit.dev/convert/heic-to-jpg — Convert iPhone HEIC photos to universal JPG. Covers why HEIC breaks outside Apple devices and how JPG fixes compatibility.
 - https://favgrab.boldkit.dev/convert/heic-to-png — Convert HEIC to lossless PNG for editing pipelines.
+- https://favgrab.boldkit.dev/convert/heic-to-webp — Convert HEIC straight to WebP in one step for web-bound iPhone photos; skips the heavier JPG/PNG stage.
 - https://favgrab.boldkit.dev/convert/webp-to-png — Save downloaded .webp files as PNG; transparency is preserved.
+- https://favgrab.boldkit.dev/convert/webp-to-jpg — Convert .webp to universal JPG; transparency is flattened onto a solid background.
 - https://favgrab.boldkit.dev/convert/png-to-webp — Compress PNG to WebP (typically 25–35% smaller) for faster web pages, with adjustable quality.
+- https://favgrab.boldkit.dev/convert/jpg-to-webp — Compress JPG/JPEG to WebP (typically 25–35% smaller) for faster sites.
 - https://favgrab.boldkit.dev/convert/png-to-jpg — Shrink heavy PNG screenshots/exports to compact JPG; notes that transparency is flattened.
 - https://favgrab.boldkit.dev/convert/jpg-to-png — Convert JPG/JPEG to lossless PNG; clarifies it stops further loss but cannot restore lost detail.
+- https://favgrab.boldkit.dev/convert/avif-to-png — Save next-gen .avif images as universal lossless PNG; transparency preserved.
+- https://favgrab.boldkit.dev/convert/avif-to-jpg — Convert .avif to universal JPG for apps and forms that don't support AVIF.
+- https://favgrab.boldkit.dev/convert/png-to-avif — Compress PNG to AVIF (often half the size or less) for the smallest high-quality web images; notes AVIF encoding is more CPU-intensive.
+- https://favgrab.boldkit.dev/convert/jpg-to-avif — Compress JPG/JPEG to AVIF for maximum compression with a JPG/WebP fallback recommended.
+- https://favgrab.boldkit.dev/convert/gif-to-png — Convert the first frame of a GIF to a full-colour lossless PNG still (animation is not preserved).
+- https://favgrab.boldkit.dev/convert/tiff-to-png — Convert TIFF/TIF scans to lossless PNG that opens anywhere; emphasizes local processing for sensitive documents; converts the first page of a multi-page TIFF.
+- https://favgrab.boldkit.dev/convert/tiff-to-jpg — Shrink large TIFF scans to compact JPG with quality control; first page of a multi-page TIFF.
+- https://favgrab.boldkit.dev/convert/bmp-to-png — Convert uncompressed BMP bitmaps to compact lossless PNG (no quality loss, much smaller).
 - https://favgrab.boldkit.dev/convert/png-to-ico — Generate a favicon.ico or Windows desktop icon from a PNG.
+- https://favgrab.boldkit.dev/convert/jpg-to-ico — Generate a favicon.ico or Windows desktop icon from a JPG (solid background, since JPG has no transparency).
 
 Routing note: these pages are served as static files at clean (extensionless) URLs via Vercel `cleanUrls`, while `/` and `/convert` are handled by the single-page app. Each page carries exactly one FAQPage block to avoid duplicate structured-data conflicts.
 
