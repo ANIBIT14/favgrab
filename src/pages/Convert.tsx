@@ -151,7 +151,7 @@ export default function Convert() {
           locally.
         </h1>
         <p className="hero-sub">
-          PNG · JPG · WebP · AVIF · HEIC · TIFF · BMP · ICO<br />
+          PNG · JPG · JFIF · WebP · AVIF · HEIC · TIFF · BMP · ICO<br />
           100% in your browser. No uploads. Works offline.
         </p>
         <div className="convert-badges">
@@ -191,7 +191,7 @@ export default function Convert() {
             <strong>Drop images here</strong>
             <span> or click to browse</span>
           </div>
-          <div className="dropzone-hint">PNG · JPG · WebP · AVIF · GIF · BMP · ICO · HEIC · HEIF · TIFF</div>
+          <div className="dropzone-hint">PNG · JPG · JFIF · WebP · AVIF · GIF · BMP · ICO · HEIC · HEIF · TIFF</div>
         </div>
       </div>
 
