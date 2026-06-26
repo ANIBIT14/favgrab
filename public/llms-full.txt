@@ -24,21 +24,22 @@ URL: https://favgrab.boldkit.dev/convert
 
 ### Supported input formats
 
-PNG, JPG/JPEG, WebP, AVIF, GIF (first frame only), BMP, ICO, HEIC, HEIF, TIFF.
+PNG, JPG/JPEG, JFIF, WebP, AVIF, GIF (first frame only), BMP, ICO, HEIC, HEIF, TIFF.
 
 Decoders:
 
-- PNG, JPG, WebP, AVIF, GIF, BMP, ICO are decoded by the browser's native `createImageBitmap()` API.
+- PNG, JPG, JFIF, WebP, AVIF, GIF, BMP, ICO are decoded by the browser's native `createImageBitmap()` API. (JFIF is the standard JPEG container, so `.jfif` files go through the same JPEG path as `.jpg`.)
 - HEIC and HEIF are decoded by `libheif-js` (WebAssembly), loaded on demand the first time a HEIC/HEIF file is dropped.
 - TIFF is decoded by `utif2`, loaded on demand.
 
 ### Supported output formats
 
-PNG, JPG/JPEG, WebP, AVIF, BMP, ICO.
+PNG, JPG/JPEG, JFIF, WebP, AVIF, BMP, ICO.
 
 Encoders:
 
 - PNG, JPG, WebP via the browser's Canvas `toBlob()` API.
+- JFIF is encoded as a JPEG via Canvas `toBlob('image/jpeg')` and saved with a `.jfif` extension — the browser writes a standard JFIF APP0 header, so the output is a normal JPEG with the requested extension.
 - AVIF via `@jsquash/avif` WebAssembly, loaded on demand.
 - BMP via a small custom 24-bit BMP writer.
 - ICO via a small custom writer that wraps a PNG payload in an ICO container (single image, up to 256×256).
@@ -47,7 +48,7 @@ HEIC, HEIF, and TIFF are not offered as output formats because no viable client-
 
 ### Options
 
-- Quality: an integer from 1 to 100, default 95, applied to lossy outputs (JPG, WebP, AVIF). PNG and BMP are lossless. ICO embeds a lossless PNG.
+- Quality: an integer from 1 to 100, default 95, applied to lossy outputs (JPG, JFIF, WebP, AVIF). PNG and BMP are lossless. ICO embeds a lossless PNG.
 - Resize: optional. When enabled, the user provides a max-side value in pixels. Images larger than that on either side are downscaled with high-quality bilinear filtering; the aspect ratio is preserved. Upscaling is never applied.
 - Batch: any number of files can be processed. Files are converted sequentially with per-file progress. Results can be downloaded individually or all at once as a streaming ZIP archive (produced with `client-zip`).
 
@@ -69,6 +70,11 @@ In addition to the interactive tool, FavGrab ships a set of static, server-frien
 - https://favgrab.boldkit.dev/convert/jpg-to-webp — Compress JPG/JPEG to WebP (typically 25–35% smaller) for faster sites.
 - https://favgrab.boldkit.dev/convert/png-to-jpg — Shrink heavy PNG screenshots/exports to compact JPG; notes that transparency is flattened.
 - https://favgrab.boldkit.dev/convert/jpg-to-png — Convert JPG/JPEG to lossless PNG; clarifies it stops further loss but cannot restore lost detail.
+- https://favgrab.boldkit.dev/convert/jfif-to-png — Convert a .jfif file (a JPEG with an unusual extension) to universal lossless PNG; explains what a JFIF file actually is.
+- https://favgrab.boldkit.dev/convert/jfif-to-jpg — Re-save a confusing .jfif as a standard .jpg; explains JFIF and JPG are the same JPEG format and why Windows/Chrome sometimes write .jfif.
+- https://favgrab.boldkit.dev/convert/jfif-to-webp — Convert a .jfif image to lightweight WebP for web use; transparency-free, like any JPEG.
+- https://favgrab.boldkit.dev/convert/png-to-jfif — Convert PNG to JFIF (standard JPEG with a .jfif extension) for systems or forms that specifically request .jfif; flattens transparency.
+- https://favgrab.boldkit.dev/convert/jpg-to-jfif — Give a JPG the .jfif extension some legacy systems/forms require; no real format change since both are JPEG.
 - https://favgrab.boldkit.dev/convert/avif-to-png — Save next-gen .avif images as universal lossless PNG; transparency preserved.
 - https://favgrab.boldkit.dev/convert/avif-to-jpg — Convert .avif to universal JPG for apps and forms that don't support AVIF.
 - https://favgrab.boldkit.dev/convert/png-to-avif — Compress PNG to AVIF (often half the size or less) for the smallest high-quality web images; notes AVIF encoding is more CPU-intensive.

@@ -18,6 +18,7 @@ const POPULAR_CONVERSIONS = [
   { href: '/convert/png-to-webp', label: 'PNG → WebP' },
   { href: '/convert/png-to-jpg', label: 'PNG → JPG' },
   { href: '/convert/jpg-to-png', label: 'JPG → PNG' },
+  { href: '/convert/jfif-to-jpg', label: 'JFIF → JPG' },
   { href: '/convert/png-to-ico', label: 'PNG → ICO' },
 ]
 

@@ -1,9 +1,9 @@
 export type InputFormat =
-  | 'png' | 'jpeg' | 'webp' | 'avif' | 'gif' | 'bmp' | 'ico'
+  | 'png' | 'jpeg' | 'jfif' | 'webp' | 'avif' | 'gif' | 'bmp' | 'ico'
   | 'heic' | 'heif' | 'tiff'
 
 export type OutputFormat =
-  | 'png' | 'jpeg' | 'webp' | 'avif' | 'bmp' | 'ico'
+  | 'png' | 'jpeg' | 'jfif' | 'webp' | 'avif' | 'bmp' | 'ico'
 
 export interface ResizeOptions {
   maxSide: number

@@ -18,6 +18,11 @@ export async function encode(
     return canvasToBlob(bitmap, `image/${format}`, q01)
   }
 
+  if (format === 'jfif') {
+    // JFIF is just JPEG — the browser's JPEG encoder writes a JFIF APP0 header.
+    return canvasToBlob(bitmap, 'image/jpeg', q01)
+  }
+
   if (format === 'avif') {
     return encodeAvif(bitmap, quality)
   }

@@ -12,7 +12,7 @@ const TITLES: Record<string, string> = {
 
 const DESCRIPTIONS: Record<string, string> = {
   '/':        "Download favicons from any website in PNG, WebP, or JPG at sizes 16px–256px. Free, no signup, no tracking — works in your browser.",      // 137
-  '/convert': "Convert images between PNG, JPG, WebP, AVIF, HEIC, TIFF, BMP, and ICO — 100% in your browser. No uploads, works offline, free.",          // 135
+  '/convert': "Convert images between PNG, JPG, JFIF, WebP, AVIF, HEIC, TIFF, BMP, and ICO — 100% in your browser. No uploads, works offline, free.",    // 141
 }
 
 const CANONICAL_BASE = 'https://favgrab.boldkit.dev'

@@ -11,7 +11,7 @@ export const SITE = {
   org: 'Vanikya AI',
   orgUrl: 'https://vanikya.ai',
   github: 'https://github.com/ANIBIT14/favgrab',
-  lastmod: '2026-06-22',
+  lastmod: '2026-06-26',
 }
 
 // Shared "why convert locally" cards — worded once, reused on pair pages where it
@@ -43,6 +43,14 @@ const F = {
       ['Transparency', 'No (flattens onto a background)'],
       ['Compatibility', 'Universal — opens literally everywhere'],
       ['Best for', 'Photographs, email attachments, uploads that must just work'],
+    ],
+  },
+  JFIF: {
+    name: 'JFIF', rows: [
+      ['What it is', 'A JPEG file — JFIF is the standard JPEG container'],
+      ['Compression', 'Lossy — identical to JPG, with adjustable quality'],
+      ['Transparency', 'No (flattens onto a background, exactly like JPG)'],
+      ['Compatibility', 'Same bytes as JPG, but the .jfif name confuses many apps'],
     ],
   },
   PNG: {
@@ -788,6 +796,186 @@ const PAIRS = [
     ctaTitle: 'Build your favicon now',
     ctaText: 'Convert a JPG into a ready-to-ship ICO — locally and free.',
   },
+
+  {
+    from: 'JFIF', to: 'PNG',
+    title: 'Convert JFIF to PNG — Free & Lossless · FavGrab',
+    description: 'Turn a stubborn .jfif file into a clean PNG that opens anywhere. 100% in your browser, no uploads, batch and ZIP supported. Completely free.',
+    keywords: 'jfif to png, convert jfif to png, jfif to png online, open jfif file, jfif png converter, what is a jfif file',
+    eyebrow: 'JFIF → PNG',
+    h1: 'Convert <span class="hl">JFIF</span> to PNG',
+    lead: 'Downloaded an image and got a `.jfif` your software won’t open? Convert it to a universal, lossless PNG here — instantly, with nothing uploaded.',
+    intro: [
+      'A **JFIF** file is not some exotic format — it *is* a JPEG. “JFIF” (JPEG File Interchange Format) is the standard container JPEGs have always used, and Windows and Chrome occasionally save images with the `.jfif` extension instead of `.jpg`. The pixels are identical; only the name is unfamiliar, which is exactly why double-clicking one sometimes throws an error.',
+      'Converting to **PNG** gives you a file that opens in every viewer, editor, and document without question. PNG is lossless, so from this point on no further detail is shed, and if you later need a transparent background you’ll be able to add one — something JPEG/JFIF can never store. The PNG will be larger than the JFIF; that’s the cost of lossless, universal compatibility.',
+    ],
+    steps: [
+      { b: 'Open the converter', text: 'Click the button above to open FavGrab — no sign-up, no install.' },
+      { b: 'Drop the JFIF file', text: 'Drag the .jfif image onto the dropzone, or add a whole batch at once.' },
+      { b: 'Choose PNG', text: 'Select PNG as the output. There’s no quality setting — PNG is always lossless.' },
+      { b: 'Convert & save', text: 'Convert and download your PNG, or grab a ZIP if you converted several.' },
+    ],
+    compareLeft: F.JFIF, compareRight: F.PNG,
+    useCases: [
+      'Opening a .jfif that your image viewer refuses to recognise',
+      'Editing the image cleanly in software that expects PNG',
+      'Keeping a lossless copy before further edits',
+      'Preparing an image you’ll later give a transparent background',
+    ],
+    faq: [
+      { q: 'What exactly is a JFIF file?', a: ['It’s a JPEG. JFIF is the standard interchange format JPEGs are saved in, and some browsers and Windows builds simply use the .jfif extension instead of .jpg. The image data is the same — only the file name differs.'] },
+      { q: 'Is JFIF to PNG lossless?', a: ['The PNG step is fully lossless and preserves every pixel decoded from the JFIF. Note the JFIF was already a lossy JPEG out of the camera or export, so PNG can’t recover detail that was discarded — it simply stops any further loss.'] },
+      { q: 'Does converting add transparency?', a: ['Conversion alone won’t remove a background, but once the image is a PNG you can erase the background in an editor and save the transparency, which JFIF could never hold.'] },
+      { q: 'Are my files uploaded?', a: ['No. The conversion runs entirely in your browser; your images never reach a server.'] },
+    ],
+    related: ['/convert/jfif-to-jpg', '/convert/png-to-jfif', '/convert/jpg-to-png', '/image-converter'],
+    ctaTitle: 'Stuck with a .jfif you can’t open?',
+    ctaText: 'Turn it into a universal PNG in seconds — privately, in your browser.',
+  },
+
+  {
+    from: 'JFIF', to: 'JPG',
+    title: 'Convert JFIF to JPG — Fix the Extension Free · FavGrab',
+    description: 'Rename a confusing .jfif file to a standard .jpg that opens everywhere. Same image, friendly extension. 100% local in your browser, batch supported, free.',
+    keywords: 'jfif to jpg, jfif to jpeg, convert jfif to jpg, change jfif to jpg, jfif to jpg online, why is my image a jfif',
+    eyebrow: 'JFIF → JPG',
+    h1: 'Convert <span class="hl">JFIF</span> to JPG',
+    lead: 'A `.jfif` and a `.jpg` are the same kind of file — JPEG. Convert here to get the familiar `.jpg` extension that every app and upload form expects, without uploading anything.',
+    intro: [
+      'If a download landed on your disk as **JFIF**, you don’t have a broken or unusual image — you have a **JPEG with an awkward extension**. JFIF (JPEG File Interchange Format) is the very container JPEGs are stored in; Chrome and some Windows versions just label the file `.jfif` instead of `.jpg`. The bytes are identical.',
+      'The catch is that plenty of apps, websites, and email clients only recognise `.jpg` or `.jpeg` and balk at `.jfif`. This converter re-saves the image as a standard **JPG** so it drops cleanly into any inbox, form, or editor. Because both are JPEG, you can keep the quality slider at 100 for an essentially identical copy — you’re really just giving the file the extension the rest of the world expects.',
+    ],
+    steps: [
+      { b: 'Open the converter', text: 'Open FavGrab from the button above — no account, no install.' },
+      { b: 'Drop the JFIF file', text: 'Add one .jfif image or a whole batch onto the dropzone.' },
+      { b: 'Choose JPG', text: 'Pick JPG and leave quality high (95–100) for a near-identical copy.' },
+      { b: 'Convert & download', text: 'Convert, then save each .jpg or grab the whole set as a single ZIP.' },
+    ],
+    compareLeft: F.JFIF, compareRight: F.JPG,
+    useCases: [
+      'Uploading to a form or website that rejects the .jfif extension',
+      'Attaching an image to an email client that won’t accept .jfif',
+      'Opening the file in an app that only recognises .jpg',
+      'Tidying a folder so every photo uses the familiar .jpg name',
+    ],
+    faq: [
+      { q: 'What’s the difference between JFIF and JPG?', a: ['Essentially none. JFIF is the standard format JPEG images are stored in, and .jpg / .jpeg / .jfif all wrap the same kind of data. The .jfif extension just appears less often, which is why some apps don’t recognise it.'] },
+      { q: 'Will I lose quality converting JFIF to JPG?', a: ['Both are JPEG, so at quality 95–100 the result is visually identical to the original. There is a tiny re-encode, but it’s imperceptible at high quality settings.'] },
+      { q: 'Why did my image save as .jfif instead of .jpg?', a: ['It’s a known quirk of how Windows registers the JPEG image type — some Chrome and Windows combinations write JPEGs with a .jfif extension. The file is fine; only the extension is unusual.'] },
+      { q: 'Are my files uploaded?', a: ['No. The conversion runs entirely in your browser, so your images never leave your device.'] },
+    ],
+    related: ['/convert/jfif-to-png', '/convert/jpg-to-jfif', '/convert/jfif-to-webp', '/image-converter'],
+    ctaTitle: 'Need a normal .jpg?',
+    ctaText: 'Convert JFIF to JPG in seconds — privately, in your browser.',
+  },
+
+  {
+    from: 'JFIF', to: 'WebP',
+    title: 'Convert JFIF to WebP — Smaller & Web-Ready · FavGrab',
+    description: 'Turn a .jfif image into a lightweight WebP for faster websites. Adjustable quality, 100% local in your browser, batch and ZIP. Free, no uploads.',
+    keywords: 'jfif to webp, convert jfif to webp, jfif to webp online, jfif webp converter, compress jfif, jfif to web image',
+    eyebrow: 'JFIF → WebP',
+    h1: 'Convert <span class="hl">JFIF</span> to WebP',
+    lead: 'Putting that `.jfif` on a website? Convert it straight to compact WebP here — smaller files, faster pages, and nothing uploaded.',
+    intro: [
+      'A **JFIF** file is a JPEG with an unusual extension, and like any JPEG it isn’t the most efficient choice for the modern web. **WebP** stores the same image at a noticeably smaller size — typically 25–35% lighter at the same visual quality — which means faster page loads and lower bandwidth.',
+      'Converting JFIF → WebP gives you a clean, web-ready file with a sensible name, ready to drop into any site. Every current browser has supported WebP since 2020, so it’s safe to ship today. Use the quality slider to balance crispness against size; because it all runs locally, you can experiment freely without re-uploading anything.',
+    ],
+    steps: [
+      { b: 'Open the converter', text: 'Open the FavGrab converter from the button above — no sign-up needed.' },
+      { b: 'Drop your JFIF files', text: 'Add one .jfif image or a whole batch to optimise.' },
+      { b: 'Choose WebP and tune quality', text: 'Select WebP and set the slider — around 80 is an excellent balance for web images.' },
+      { b: 'Convert & compare', text: 'Convert and check the new size shown next to each file before downloading.' },
+    ],
+    compareLeft: F.JFIF, compareRight: F.WEBP,
+    useCases: [
+      'Publishing a downloaded .jfif to a website or blog',
+      'Shrinking image payloads to improve Core Web Vitals',
+      'Serving smaller photos without a visible quality drop',
+      'Replacing an oddly-named .jfif with a clean web asset',
+    ],
+    faq: [
+      { q: 'Why convert JFIF to WebP instead of JPG?', a: ['For the web, WebP usually produces a smaller file than JPEG (which is what JFIF is) at the same quality, so pages load faster. If you just need universal compatibility instead, convert JFIF to JPG.'] },
+      { q: 'Will I lose quality?', a: ['A JFIF is already a lossy JPEG, and WebP re-encodes it, so there’s a small generational loss. At quality 80 or above it’s visually negligible while the file gets meaningfully smaller.'] },
+      { q: 'Is WebP safe to use on my site?', a: ['Yes — every current browser (Chrome, Edge, Firefox, Safari) has supported WebP for years. It’s a standard production choice.'] },
+      { q: 'Are my files uploaded?', a: ['No. Decoding and encoding happen in your browser with Canvas and WebAssembly; your images never leave your device.'] },
+    ],
+    related: ['/convert/jfif-to-png', '/convert/jfif-to-jpg', '/convert/jpg-to-webp', '/image-converter'],
+    ctaTitle: 'Got a .jfif bound for the web?',
+    ctaText: 'Convert JFIF straight to WebP — small, fast, and private in your browser.',
+  },
+
+  {
+    from: 'PNG', to: 'JFIF',
+    title: 'Convert PNG to JFIF — Free, No Upload · FavGrab',
+    description: 'Convert PNG images to JFIF (standard JPEG) with an adjustable quality slider. 100% local in your browser, batch and ZIP supported. Free, no uploads.',
+    keywords: 'png to jfif, convert png to jfif, png to jfif online, png jfif converter, save png as jfif, make a jfif file',
+    eyebrow: 'PNG → JFIF',
+    h1: 'Convert <span class="hl">PNG</span> to JFIF',
+    lead: 'Need a `.jfif` file specifically — because a system or form asked for one? Convert your PNG here. JFIF is just JPEG, produced locally with a quality slider you control.',
+    intro: [
+      '**JFIF** is the standard container for **JPEG** images, so converting PNG → JFIF is really PNG → JPEG with a `.jfif` extension. People usually land here because a particular upload form, legacy system, or assignment explicitly asked for a `.jfif` file, even though it’s the same format as a `.jpg`.',
+      'The conversion compresses your PNG into a small, lossy JFIF and flattens any transparency onto a solid background, exactly as JPEG does — JFIF has no alpha channel. Use the quality slider to balance file size against clarity. It all happens in your browser, so you can re-try until the size and look are right without uploading anything.',
+    ],
+    steps: [
+      { b: 'Open the converter', text: 'Open the FavGrab converter from the button above.' },
+      { b: 'Drop your PNGs', text: 'Add one image or a whole batch onto the dropzone.' },
+      { b: 'Choose JFIF and set quality', text: 'Pick JFIF and adjust the quality slider — 85–92 is a great default for most images.' },
+      { b: 'Convert & download', text: 'Convert, check the new size, and save each .jfif or grab the set as a ZIP.' },
+    ],
+    compareLeft: F.PNG, compareRight: F.JFIF,
+    useCases: [
+      'Satisfying a form or system that specifically requires a .jfif file',
+      'Shrinking a large PNG into a compact, shareable image',
+      'Producing a JPEG-format file with the exact extension requested',
+      'Compressing screenshots or exports that have no transparency to keep',
+    ],
+    faq: [
+      { q: 'Is JFIF different from JPG?', a: ['Not in any meaningful way — JFIF is the standard format JPEG files are saved in. A .jfif and a .jpg hold the same kind of data; the extension is the only difference. We output the .jfif name when you choose JFIF.'] },
+      { q: 'What happens to my PNG’s transparency?', a: ['JFIF is JPEG, which can’t store transparency, so any transparent areas are filled with a solid background during conversion. If you need to keep transparency, convert to WebP or stay with PNG instead.'] },
+      { q: 'What quality should I use?', a: ['For most images, 85–92 looks indistinguishable from the original while keeping the file small. Push to 100 for maximum fidelity, or lower for aggressive compression.'] },
+      { q: 'Are my files uploaded?', a: ['No. Everything is encoded in your browser, so your images never reach a server.'] },
+    ],
+    related: ['/convert/jpg-to-jfif', '/convert/jfif-to-png', '/convert/png-to-jpg', '/image-converter'],
+    ctaTitle: 'Need a .jfif from your PNG?',
+    ctaText: 'Convert PNG to JFIF with full quality control — privately, in your browser.',
+  },
+
+  {
+    from: 'JPG', to: 'JFIF',
+    title: 'Convert JPG to JFIF — Free & Instant · FavGrab',
+    description: 'Convert a JPG / JPEG to a .jfif file when a system asks for that exact extension. Same JPEG data, 100% local in your browser. Batch supported, free.',
+    keywords: 'jpg to jfif, jpeg to jfif, convert jpg to jfif, change jpg to jfif, jpg to jfif online, rename jpg to jfif',
+    eyebrow: 'JPG → JFIF',
+    h1: 'Convert <span class="hl">JPG</span> to JFIF',
+    lead: 'When something insists on a `.jfif` file, convert your JPG here. They’re the same JPEG format — you just get the `.jfif` extension, produced locally with nothing uploaded.',
+    intro: [
+      '**JPG** and **JFIF** are two extensions for the same thing: a JPEG image stored in the JPEG File Interchange Format. So converting JPG → JFIF doesn’t change the format at all — it gives the file the `.jfif` name that a specific tool, portal, or assignment has asked for.',
+      'Because no format change is involved, you can keep quality at 100 for an essentially identical copy; the converter simply re-encodes the JPEG and saves it with a `.jfif` extension. Everything runs in your browser, so even a batch of photos stays entirely on your device.',
+    ],
+    steps: [
+      { b: 'Open the converter', text: 'Open FavGrab from the button above — no account needed.' },
+      { b: 'Drop your JPG files', text: 'Add one .jpg / .jpeg image or a whole batch onto the dropzone.' },
+      { b: 'Choose JFIF', text: 'Pick JFIF and leave quality high (95–100) for a near-identical copy.' },
+      { b: 'Convert & download', text: 'Convert, then save each .jfif or grab the whole set as a single ZIP.' },
+    ],
+    compareLeft: F.JPG, compareRight: F.JFIF,
+    useCases: [
+      'Meeting a requirement for a .jfif file specifically',
+      'Submitting to a portal or system that expects the .jfif extension',
+      'Matching an assignment or template that calls for .jfif',
+      'Producing the .jfif name without changing the underlying image',
+    ],
+    faq: [
+      { q: 'Does converting JPG to JFIF change the image?', a: ['Barely — JFIF is the same JPEG format, so at high quality the result is visually identical. You’re mostly changing the extension from .jpg to .jfif.'] },
+      { q: 'Why would I need a JFIF file?', a: ['Usually because a particular upload form, legacy application, or assignment explicitly asks for .jfif. Functionally it’s the same as a JPG, but some systems request that exact extension.'] },
+      { q: 'Will quality drop?', a: ['Keep the slider at 95–100 and the re-encode is imperceptible. There’s a tiny generational loss inherent to any JPEG re-save, negligible at high quality.'] },
+      { q: 'Are my files uploaded?', a: ['No. The conversion runs entirely in your browser, so your images never leave your device.'] },
+    ],
+    related: ['/convert/png-to-jfif', '/convert/jfif-to-jpg', '/convert/jpg-to-png', '/image-converter'],
+    ctaTitle: 'Need that .jfif extension?',
+    ctaText: 'Convert JPG to JFIF in seconds — privately, in your browser.',
+  },
 ]
 
 // A couple of extra pairs referenced as related links but not in the focused
@@ -823,8 +1011,8 @@ export const hub = {
     'Most “online” image converters quietly upload your pictures to a server, process them there, and hand back a download. That means waiting on your connection, trusting a stranger with your files, and hitting size or batch limits when the free tier runs out.',
     'FavGrab takes the opposite approach: **every conversion happens on your own machine**. It uses the browser’s built-in Canvas APIs plus lazy-loaded WebAssembly codecs (libheif for HEIC, utif2 for TIFF, jSquash for AVIF) so your files never leave the tab. The result is faster, completely private, and free with no limits — convert one image or a hundred, online or offline.',
   ],
-  formatsIn: ['PNG', 'JPG', 'WebP', 'AVIF', 'GIF', 'BMP', 'ICO', 'HEIC', 'HEIF', 'TIFF'],
-  formatsOut: ['PNG', 'JPG', 'WebP', 'AVIF', 'BMP', 'ICO'],
+  formatsIn: ['PNG', 'JPG', 'JFIF', 'WebP', 'AVIF', 'GIF', 'BMP', 'ICO', 'HEIC', 'HEIF', 'TIFF'],
+  formatsOut: ['PNG', 'JPG', 'JFIF', 'WebP', 'AVIF', 'BMP', 'ICO'],
   features: [
     ['Truly local', 'Nothing is uploaded — decoding and encoding run in your browser.'],
     ['Batch + ZIP', 'Convert many files at once and download them as a single ZIP.'],
@@ -840,7 +1028,7 @@ export const hub = {
     '/convert/jpg-to-webp',
     '/convert/png-to-webp',
     '/convert/avif-to-png',
-    '/convert/heic-to-png',
+    '/convert/jfif-to-jpg',
     '/convert/png-to-ico',
   ],
   // Full internal-link list — every generated guide, so the hub links to the
@@ -849,7 +1037,7 @@ export const hub = {
   faq: [
     { q: 'Is this image converter really free?', a: ['Yes — completely free with no signup, no watermark, and no paid tier. Because conversions run in your browser there are no server costs to recoup, so there’s nothing to upsell.'] },
     { q: 'Are my images uploaded anywhere?', a: ['No. Every image is decoded and re-encoded locally using your browser’s Canvas and WebAssembly. Your files never touch a server, which makes the tool both private and fast.'] },
-    { q: 'Which formats can I convert between?', a: ['You can open PNG, JPG, WebP, AVIF, GIF, BMP, ICO, HEIC, HEIF and TIFF, and export to PNG, JPG, WebP, AVIF, BMP or ICO. HEIC and TIFF decoders load automatically the first time you need them.'] },
+    { q: 'Which formats can I convert between?', a: ['You can open PNG, JPG, JFIF, WebP, AVIF, GIF, BMP, ICO, HEIC, HEIF and TIFF, and export to PNG, JPG, JFIF, WebP, AVIF, BMP or ICO. HEIC and TIFF decoders load automatically the first time you need them.'] },
     { q: 'Can I convert multiple images at once?', a: ['Yes. Drop a whole batch, convert them in one pass, and download everything as a single ZIP archive.'] },
     { q: 'Does it work offline?', a: ['Yes. After your first visit the converter is cached, so it keeps working with no internet connection at all.'] },
     { q: 'Will converting reduce my image quality?', a: ['Lossless targets like PNG keep every pixel. For lossy targets (JPG, WebP, AVIF) you control fidelity with the quality slider, and the tool shows the resulting file size so you can pick the right balance.'] },

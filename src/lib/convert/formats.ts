@@ -19,7 +19,17 @@ export const FORMATS: Record<InputFormat, FormatInfo> = {
   },
   jpeg: {
     id: 'jpeg', label: 'JPG', ext: 'jpg', mime: 'image/jpeg',
-    inputExts: ['jpg', 'jpeg', 'jfif'], inputMimes: ['image/jpeg'],
+    inputExts: ['jpg', 'jpeg'], inputMimes: ['image/jpeg'],
+    supportsQuality: true, canOutput: true,
+  },
+  // JFIF is the standard JPEG container — same bytes, different extension.
+  // It decodes through the native JPEG path and encodes as image/jpeg; we keep
+  // it as a distinct format so users can save .jfif and so it gets its own SEO
+  // pages. No inputMime is claimed (image/jpeg already maps to jpeg, and JFIF
+  // files are detected by their FF D8 FF magic as jpeg anyway).
+  jfif: {
+    id: 'jfif', label: 'JFIF', ext: 'jfif', mime: 'image/jpeg',
+    inputExts: ['jfif'], inputMimes: [],
     supportsQuality: true, canOutput: true,
   },
   webp: {
@@ -64,7 +74,7 @@ export const FORMATS: Record<InputFormat, FormatInfo> = {
   },
 }
 
-export const OUTPUT_FORMATS: OutputFormat[] = ['png', 'jpeg', 'webp', 'avif', 'bmp', 'ico']
+export const OUTPUT_FORMATS: OutputFormat[] = ['png', 'jpeg', 'jfif', 'webp', 'avif', 'bmp', 'ico']
 
 export const ALL_INPUT_ACCEPT = (() => {
   const exts = new Set<string>()
