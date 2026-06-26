@@ -143,7 +143,7 @@ export default function Convert() {
         { label: 'Image Converter' },
       ]} />
       <section className="hero convert-hero">
-        <div className="hero-eyebrow">Image Converter — beta</div>
+        <div className="hero-eyebrow">Image Converter</div>
         <h1 className="hero-title">
           Convert any<br />
           <span className="hero-title-line2">image format,</span><br />
